@@ -1,0 +1,89 @@
+.form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.sectionGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.twoColumn,
+.threeColumn {
+  display: grid;
+  gap: 1rem;
+}
+
+.togglePanel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.switchRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.uploadBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.disabledUpload {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.manualImageRow {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.imageGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.imageCard {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(141, 104, 71, 0.12);
+}
+
+.imageCard img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .sectionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .twoColumn {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .threeColumn {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .manualImageRow {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}

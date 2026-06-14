@@ -1,0 +1,455 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 1rem 0 0;
+  backdrop-filter: blur(18px);
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3.3rem;
+  grid-template-areas:
+    "brand toggle"
+    "search search";
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(143, 103, 56, 0.12);
+  border-radius: 1.9rem;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.84), rgba(247, 236, 225, 0.7)),
+    rgba(255, 253, 250, 0.88);
+  box-shadow: 0 22px 58px rgba(83, 57, 38, 0.1);
+}
+
+.brand {
+  grid-area: brand;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.brand > span:last-child {
+  min-width: 0;
+}
+
+.brand strong {
+  display: block;
+  overflow: hidden;
+  font-size: 1.08rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand small {
+  display: block;
+  overflow: hidden;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brandMark {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), transparent 26%),
+    linear-gradient(135deg, rgba(193, 150, 88, 0.22), rgba(217, 182, 173, 0.44));
+  border: 1px solid rgba(143, 103, 56, 0.14);
+  color: var(--gold-deep);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 14px 28px rgba(92, 67, 45, 0.12);
+}
+
+.search {
+  grid-area: search;
+  position: relative;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.search input {
+  width: 100%;
+  min-height: 3.15rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.search button {
+  width: 100%;
+}
+
+.searchDropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: grid;
+  gap: 0.4rem;
+  max-height: min(24rem, 58vh);
+  overflow-y: auto;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(143, 103, 56, 0.14);
+  box-shadow: var(--shadow-strong);
+}
+
+.searchResult {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.65rem;
+  border: none;
+  border-radius: 1.1rem;
+  background: transparent;
+  text-align: left;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.searchResult:hover {
+  background: rgba(244, 230, 215, 0.65);
+  transform: translateX(2px);
+}
+
+.searchResult img {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.searchResult span {
+  min-width: 0;
+}
+
+.searchResult strong,
+.searchResult small {
+  display: block;
+}
+
+.searchResult strong,
+.searchResult small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchResult small {
+  color: var(--text-soft);
+}
+
+.menuToggle {
+  grid-area: toggle;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  width: 3.3rem;
+  height: 3.3rem;
+  padding: 0;
+  border-radius: 1.15rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 16px 36px rgba(83, 57, 38, 0.1);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.menuToggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(83, 57, 38, 0.14);
+}
+
+.menuToggle span {
+  width: 1.15rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.menuToggle span + span {
+  margin-top: 0.24rem;
+}
+
+.menuToggleOpen {
+  background: rgba(244, 230, 215, 0.92);
+}
+
+.menuToggleOpen span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menuToggleOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggleOpen span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  padding: 1rem 1.2rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(143, 103, 56, 0.1);
+  box-shadow: 0 18px 42px rgba(83, 57, 38, 0.08);
+}
+
+.navLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.navLinks a {
+  position: relative;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-weight: 700;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.navLinks a:hover,
+.activeLink {
+  color: var(--text);
+  background: rgba(244, 230, 215, 0.7);
+}
+
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  border: none;
+  background: rgba(34, 25, 21, 0.26);
+  backdrop-filter: blur(7px);
+}
+
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  width: min(24rem, calc(100vw - 1rem));
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 1rem;
+  padding: 1.2rem;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.97), rgba(245, 232, 218, 0.95)),
+    var(--surface-strong);
+  border-left: 1px solid rgba(143, 103, 56, 0.12);
+  box-shadow: -28px 0 70px rgba(48, 32, 22, 0.18);
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.drawerEyebrow {
+  margin: 0 0 0.3rem;
+  color: var(--gold-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.drawerHeader strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.drawerClose {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.drawerClose span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+}
+
+.drawerClose span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.drawerClose span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.drawerPanel {
+  padding: 1rem 1.05rem;
+  border-radius: 1.35rem;
+  background: rgba(244, 230, 215, 0.5);
+  border: 1px solid rgba(143, 103, 56, 0.1);
+}
+
+.drawerPanel p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.drawerLinks {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(143, 103, 56, 0.1);
+  color: var(--text-soft);
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.drawerLink::after {
+  content: "›";
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.drawerLink:hover,
+.drawerLinkActive {
+  transform: translateX(-2px);
+  color: var(--text);
+  background: rgba(244, 230, 215, 0.84);
+  border-color: rgba(193, 150, 88, 0.24);
+}
+
+.drawerFooter {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.drawerFooter a {
+  width: 100%;
+}
+
+@media (min-width: 920px) {
+  .topRow {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "brand search";
+    align-items: center;
+  }
+
+  .search {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .search button {
+    width: auto;
+  }
+
+  .menuToggle {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+  }
+}
+
+@media (max-width: 919px) {
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding-top: 0.8rem;
+  }
+
+  .topRow {
+    grid-template-columns: minmax(0, 1fr) 3rem;
+    gap: 0.9rem;
+    padding: 0.95rem;
+    border-radius: 1.65rem;
+  }
+
+  .brand {
+    gap: 0.75rem;
+  }
+
+  .brand strong {
+    font-size: 0.96rem;
+  }
+
+  .brand small {
+    font-size: 0.84rem;
+  }
+
+  .brandMark {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .menuToggle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+  }
+
+  .mobileDrawer {
+    width: min(22rem, calc(100vw - 0.35rem));
+    padding: 1rem;
+  }
+}

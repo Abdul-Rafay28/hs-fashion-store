@@ -1,0 +1,650 @@
+.hero {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.heroLuxury {
+  min-height: auto;
+}
+
+.heroContent,
+.heroVisual {
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  display: grid;
+  align-content: center;
+  gap: 1.15rem;
+  max-width: 35rem;
+}
+
+.heroLead {
+  max-width: 33rem;
+  font-size: 1rem;
+}
+
+.heroPillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.heroPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(176, 134, 88, 0.16);
+  color: var(--gold-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 30px rgba(68, 46, 31, 0.08);
+}
+
+.heroVisual {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.imageStack {
+  position: relative;
+  width: min(100%, 29rem);
+  padding: 0.8rem;
+}
+
+.imageStack::before,
+.imageStack::after {
+  content: "";
+  position: absolute;
+  border-radius: 2.4rem;
+  pointer-events: none;
+}
+
+.imageStack::before {
+  inset: 0;
+  border: 1px solid rgba(176, 134, 88, 0.18);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+}
+
+.imageStack::after {
+  right: 0;
+  bottom: 0;
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, rgba(216, 180, 173, 0.22), transparent 68%);
+  filter: blur(12px);
+}
+
+.imageStack img,
+.storyPanel img,
+.factoryPanel img {
+  width: 100%;
+  border-radius: 2.2rem;
+  object-fit: cover;
+  box-shadow: var(--shadow-strong);
+}
+
+.imageStack img {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 0.95 / 1.05;
+  object-position: center top;
+}
+
+.floatingCard,
+.signatureCard {
+  position: absolute;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 252, 248, 0.92);
+  border: 1px solid rgba(176, 134, 88, 0.16);
+  box-shadow: 0 20px 50px rgba(83, 57, 38, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+.floatingCard {
+  right: 1rem;
+  top: 1rem;
+  max-width: 14rem;
+  z-index: 3;
+}
+
+.signatureCard {
+  left: 1rem;
+  bottom: 1rem;
+  max-width: 17rem;
+  z-index: 2;
+}
+
+.floatingCard span,
+.signatureCard span {
+  color: var(--gold-deep);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.floatingCard strong,
+.signatureCard strong {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.signatureCard p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.heroStatsGrid {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.heroStatsGrid article {
+  padding: 1.15rem;
+  border-radius: 1.45rem;
+}
+
+.metricsGrid article {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.metricsGrid strong {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  color: var(--text);
+}
+
+.metricsGrid span {
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.categoryGrid,
+.editorialGrid,
+.statsGrid,
+.recentList {
+  display: grid;
+  gap: 1rem;
+}
+
+.categoryCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(176, 134, 88, 0.14);
+  box-shadow: var(--shadow-soft);
+  isolation: isolate;
+}
+
+.categoryCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13, 12, 10, 0.02) 18%, rgba(13, 12, 10, 0.78) 100%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.06), transparent 48%);
+  z-index: 1;
+}
+
+.categoryCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.7s ease,
+    filter 0.45s ease;
+}
+
+.categoryCard:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.08);
+}
+
+.categoryCardContent {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  display: grid;
+  gap: 0.55rem;
+  padding: 1.4rem;
+  color: white;
+}
+
+.categoryCardContent p {
+  color: rgba(255, 246, 235, 0.76);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.categoryCardContent span {
+  color: rgba(255, 246, 235, 0.88);
+}
+
+.editorialShell {
+  position: relative;
+  overflow: hidden;
+}
+
+.editorialGrid {
+  counter-reset: editorial;
+}
+
+.editorialCard {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-height: 11.75rem;
+  padding: 1.5rem;
+  border-radius: 1.8rem;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.9), rgba(252, 242, 233, 0.82)),
+    var(--surface);
+  border: 1px solid rgba(176, 134, 88, 0.14);
+  box-shadow: var(--shadow-soft);
+}
+
+.editorialCard span {
+  color: var(--gold-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.collectionShowcase,
+.galleryShell,
+.relatedShell,
+.resultsShell {
+  gap: 1.3rem;
+}
+
+.storyShell {
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.storyContent {
+  align-content: start;
+}
+
+.storyPanel,
+.factoryPanel {
+  overflow: hidden;
+  min-height: clamp(19rem, 34vw, 28rem);
+  aspect-ratio: 0.96 / 1.02;
+  border-radius: 2rem;
+  border: 1px solid rgba(176, 134, 88, 0.12);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+.storyPanel img,
+.factoryPanel img {
+  width: 100%;
+  height: 100%;
+  object-position: center top;
+}
+
+.shopHero {
+  display: grid;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.shopHero h1 {
+  max-width: 10ch;
+  font-size: clamp(2.9rem, 5vw, 4.8rem);
+}
+
+.shopHero p {
+  max-width: 34rem;
+}
+
+.shopHeroPanel {
+  position: relative;
+}
+
+.shopHeroCard {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 20rem;
+  padding: 1.25rem;
+  border-radius: 1.8rem;
+  background: rgba(255, 253, 250, 0.72);
+  border: 1px solid rgba(176, 134, 88, 0.14);
+  box-shadow: var(--shadow-soft);
+}
+
+.shopHeroCard span {
+  color: var(--gold-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.shopLayout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.shopToolbar,
+.panelHeader,
+.filterToolbar {
+  display: grid;
+  gap: 1rem;
+}
+
+.detailsGrid,
+.specGrid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.productSummaryCard {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  align-content: start;
+}
+
+.productSummaryCard h1 {
+  font-size: clamp(2.6rem, 5vw, 4.3rem);
+}
+
+.productLead {
+  max-width: 38rem;
+  font-size: 0.98rem;
+}
+
+.detailMetaRow {
+  gap: 0.7rem;
+}
+
+.productActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.productActions > * {
+  flex: 1 1 13rem;
+}
+
+.relatedGrid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
+}
+
+.priceStack {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.priceStack strong {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.priceStack small {
+  color: var(--text-soft);
+  text-decoration: line-through;
+}
+
+.specGrid article {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.specGrid span {
+  color: var(--text-soft);
+}
+
+.loginShell {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at top left, rgba(216, 180, 173, 0.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(184, 146, 89, 0.16), transparent 30%),
+    var(--bg);
+}
+
+.loginCard {
+  display: grid;
+  gap: 1.5rem;
+  width: min(100%, 520px);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(141, 104, 71, 0.12);
+  box-shadow: var(--shadow-strong);
+}
+
+.statCard {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.statCard span {
+  color: var(--gold-deep);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.statCard strong {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.recentProduct {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(141, 104, 71, 0.12);
+}
+
+.recentProduct img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 1.1rem;
+}
+
+.recentProduct strong,
+.recentProduct span {
+  display: block;
+}
+
+.recentProduct span {
+  color: var(--text-soft);
+}
+
+.ctaBand {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.ctaBand::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -25% auto;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 146, 89, 0.18), transparent 68%);
+}
+
+.ctaBandContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ctaBandActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+  }
+
+  .categoryGrid,
+  .editorialGrid,
+  .statsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .specGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .recentList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .shopToolbar,
+  .panelHeader,
+  .filterToolbar {
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+  }
+
+  .shopHero {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+  }
+
+  .ctaBandContent {
+    grid-template-columns: 1.1fr auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shopLayout {
+    grid-template-columns: 320px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .editorialCard {
+    min-height: 12.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    gap: 1.25rem;
+  }
+
+  .heroContent {
+    max-width: none;
+  }
+
+  .heroPillRow {
+    gap: 0.55rem;
+  }
+
+  .heroPill {
+    font-size: 0.68rem;
+    padding: 0.48rem 0.72rem;
+  }
+
+  .imageStack {
+    width: 100%;
+    padding: 0.35rem 0 0;
+  }
+
+  .imageStack::before {
+    display: none;
+  }
+
+  .imageStack::after {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .signatureCard {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    max-width: none;
+  }
+
+  .heroStatsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .heroStatsGrid article {
+    padding: 0.9rem 0.8rem;
+  }
+
+  .metricsGrid strong {
+    font-size: 1.6rem;
+  }
+
+  .metricsGrid span {
+    font-size: 0.76rem;
+  }
+
+  .categoryGrid,
+  .editorialGrid,
+  .statsGrid,
+  .recentList {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryCard {
+    min-height: 18rem;
+  }
+
+  .storyPanel,
+  .factoryPanel {
+    min-height: 18rem;
+    aspect-ratio: 1 / 1.05;
+  }
+
+  .shopHero h1 {
+    max-width: none;
+  }
+
+  .shopHeroCard {
+    max-width: none;
+  }
+
+  .productActions > * {
+    flex-basis: 100%;
+  }
+
+  .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
